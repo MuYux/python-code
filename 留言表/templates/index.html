@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            height: 60px;
+            background: #004080;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            font-size: 40px;
+            padding-left: 30px;
+        }
+        form{
+            background-color: #78b8f8;
+            color: #004080;
+            padding: 30px;
+        }
+        input{
+            margin: 10px;
+        }
+        .msg{
+            display: flex;
+            align-items: center;
+        }
+        #user_name{
+
+        }
+        textarea{
+            margin: 10px;
+            width: 300px;
+        }
+        main{
+            padding: 30px;
+            color: #004080;
+        }
+        article{
+            padding: 30px;
+        }
+        section{
+            font-size: 0.9em;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+<body>
+    <header>留言板</header>
+    <form method="post">
+        <span>请尽情留言吧:</span>
+        <div class ="msg">
+            <label for="user_name">姓名</label>
+            <input type="text" name="user_name" id="user_name">
+        </div>
+        <div class ="msg">
+            <label for="user_msg">内容</label>
+            <textarea type="text" name="user_msg" id="user_msg" rows="10"></textarea>
+        </div>
+        <button type="submit">提交</button>
+    </form>
+    <main>
+        <h3>历史留言信息</h3>
+        {% for i in list %}
+        <article>
+            <h4>#{{ i.id }}楼{{ i.name }} 留言于（{{ i.time }}）</h4>
+            <section>  {{ i.msg }}</section>
+        </article>
+        {% endfor %}
+    </main>
+</body>
+</html>
